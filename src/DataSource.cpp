@@ -134,6 +134,7 @@ string DataSource::tpchText(int length){
 	string s=" ";
 	for(int i=0; i<25; i++)
 		s = s + (i==0?"":" ") + tpchSentence();
+	replace(s.begin(),s.end(),'\'',' ');
 	int pos = randomUniformInt(0,s.length()-length);
 	return s.substr(pos,length);
 }
