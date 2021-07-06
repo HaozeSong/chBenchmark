@@ -152,7 +152,7 @@ void TupleGen::genOrder(int& oId, int& dId, int& wId, int& cId, int& olCount, st
 	if(oId<=2100)																					//O_CARRIER_ID - random within [1 .. 10] if O_ID <= 2100, null otherwise
 		DataSource::addInt(1,10,orderStream,1);
 	else
-		orderStream << "" << Config::getCsvDelim();
+		orderStream << "0" << Config::getCsvDelim();
 	orderStream << olCount << Config::getCsvDelim();												//O_OL_CNT
 	orderStream << "1";																				//O_ALL_LOCAL
 	orderStream << endl;
