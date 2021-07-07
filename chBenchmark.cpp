@@ -52,7 +52,7 @@ bool dbgen(){
 	int olCount;
 	string customerTime = "";
 	string orderTime;
-	for(int wId=1; wId<=Config::getWarehouseCount(); wId++){
+	for(int wId=0; wId<Config::getWarehouseCount(); wId++){
 		//Warehouse
 		TupleGen::genWarehouse(wId);
 
