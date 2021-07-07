@@ -43,7 +43,7 @@ bool dbgen(){
 	DataSource::initialize();
 	TupleGen::openOutputFiles();
 
-	for(int iId=1; iId<=100000; iId++){
+	for(int iId=0; iId<100000; iId++){
 		//Item
 		TupleGen::genItem(iId);
 	}
@@ -56,12 +56,12 @@ bool dbgen(){
 		//Warehouse
 		TupleGen::genWarehouse(wId);
 
-		for(int iId=1; iId<=100000; iId++){
+		for(int iId=0; iId<100000; iId++){
 			//Stock
 			TupleGen::genStock(iId, wId);
 		}
 
-		for(int dId=1; dId<=10; dId++){
+		for(int dId=0; dId<10; dId++){
 			//District
 			TupleGen::genDistrict(dId, wId);
 			for(int cId=1; cId<=3000; cId++){
