@@ -125,6 +125,8 @@ void TupleGen::genCustomer(int& cId, int& dId, int& wId, string& customerTime){
 }
 
 void TupleGen::genHistory(int& cId, int& dId, int& wId){
+	historyStream << cId << Config::getCsvDelim();
+    //H_Key
 	historyStream << cId << Config::getCsvDelim();													//H_C_ID
 	historyStream << dId << Config::getCsvDelim();													//H_C_D_ID
 	historyStream << wId << Config::getCsvDelim();													//H_C_W_ID
@@ -165,7 +167,7 @@ void TupleGen::genOrderline(int& oId, int& dId, int& wId, int& olNumber, string&
 	orderlineStream << olNumber << Config::getCsvDelim();											//OL_NUMBER
 	DataSource::addInt(1,100000,orderlineStream,1);													//OL_I_ID
 	orderlineStream << wId << Config::getCsvDelim();												//OL_SUPPLY_W_ID
-	orderlineStream << (oId<=2100?orderTime:"") << Config::getCsvDelim();							//OL_DELIVERY_D = O_ENTRY_D if OL_O_ID <= 2100, null otherwise
+	orderlineStream << (oId<=2100?orderTime:"none") << Config::getCsvDelim();							//OL_DELIVERY_D = O_ENTRY_D if OL_O_ID <= 2100, null otherwise
 	orderlineStream << "5" << Config::getCsvDelim();												//OL_QUANTITY
 	if(oId<=2100)																					//OL_AMOUNT = 0.00 if OL_O_ID <= 2100, random within [0.01..9999.99] otherwise
 		orderlineStream << "0.00" << Config::getCsvDelim();
